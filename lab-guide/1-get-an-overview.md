@@ -9,7 +9,7 @@ We are given this 2D world map:
 The main steps in today's lab are:
 - Calibrate the camera (to save time, we will use calibration results computed in advance).
 - Create a planar 3D world model from the map with point descriptors.
-- Estimate the camera pose from 3D-2D correspondences:
+- Estimate the camera pose from 2D-3D correspondences:
   - Homography-based
   - Motion-only Bundle Adjustment (moba)
 - Visualize the 3D world frame in the camera views with Augmented Reality (AR).
@@ -18,10 +18,10 @@ The main steps in today's lab are:
 ## Introduction to the project source files
 We have chosen to distribute the code on the following files:
 - *main.cpp*   
-  Starts lab 6, catches any exceptions and prints their error message on the console.
+  Starts the lab, catches any exceptions and prints their error message on the console.
 
-- *lab_6.h*, *lab_6.cpp*   
-  Runs the lab 6 loop.
+- *lab_pose_estimation.h*, *lab_pose_estimation.cpp*   
+  Runs the main loop.
 
 - *ar_example.h*, *ar_example.cpp*   
   Visualizes the world frame in the image frames given the estimated camera pose.
@@ -31,25 +31,25 @@ We have chosen to distribute the code on the following files:
   You will be responsible for implementing most of the computations in this class.
 
 - *feature_utils.h*, *feature_utils.cpp*   
-  Utility functions for feature matching (see [lab 4](https://github.com/tek5030/lab_04)).
+  Utility functions for feature matching.
 
 - *homography_pose_estimator.h*, *homography_pose_estimator.cpp*   
   Implements homography-based pose estimation for a calibrated camera and planar world points.
   You will be responsible for finishing this estimator.
 
 - *moba_pose_estimator.h*, *moba_pose_estimator.cpp*   
-  Iterative non-linear pose estimator for calibrated camera with 3D-2D correspondences.
+  Iterative non-linear pose estimator for calibrated camera with 2D-3D correspondences.
 
 - *plane_world_model.h*, *plane_world_model.cpp*   
   Represents a planar world in 3D.
-  Finds 3D-2D correspondences between the world map and camera images using feature matching.
+  Finds 2D-3D correspondences between the world map and camera images using feature matching.
 
 - *pnp_pose_estimator.h*, *pnp_pose_estimator.cpp*   
-  PnP-based pose estimator for calibrated camera with 3D-2D correspondences.
+  PnP-based pose estimator for calibrated camera with 2D-3D correspondences.
   Can be used as an alternative to `HomographyPoseEstimator`.
 
 - *pose_estimator.h*   
-  Defines an abstract interface for 3D-2D pose estimators.
+  Defines an abstract interface for 2D-3D pose estimators.
 
 - *scene_3d.h*, *scene_3d.cpp*   
   Visualizes the result in 3D.

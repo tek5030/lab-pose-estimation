@@ -1,4 +1,4 @@
-#include "lab_6.h"
+#include "lab_pose_estimation.h"
 #include "ar_example.h"
 #include "homography_pose_estimator.h"
 #include "plane_world_model.h"
@@ -31,6 +31,7 @@ struct CameraModel
   Eigen::Matrix3d K;
   cv::Matx33d K_cv;
   cv::Vec5d dist_coeffs_cv;
+  cv::Size2i img_size;
 
   Eigen::Vector2d principalPoint() const { return {K(0,2), K(1,2)}; }
   Eigen::Vector2d focalLengths() const { return {K(0,0), K(1,1)}; }
@@ -41,7 +42,7 @@ CameraModel setupCameraModel()
 {
   // TODO 1: Calibrate your camera using the application "opencv_interactive-calibration".
 
-  // TODO 1: Set K according to calibration.
+  // TODO 1.1: Set K according to calibration.
   // Set calibration matrix K.
   Eigen::Matrix3d K;
 
@@ -49,11 +50,15 @@ CameraModel setupCameraModel()
   cv::Matx33d K_cv;
   cv::eigen2cv(K, K_cv);
 
-  // TODO 1: Set dist_coeffs_cv according to the calibration.
+  // TODO 1.2: Set dist_coeffs_cv according to the calibration.
   // Set distortion coefficients [k1, k2, 0, 0, k3].
   cv::Vec5d dist_coeffs_cv{0., 0., 0., 0., 0. };
 
-  return CameraModel{K, K_cv, dist_coeffs_cv};
+  // TODO 1.3: Set the image size corresponding to the calibration.
+  // Set image size.
+  cv::Size2i img_size(640, 480);
+
+  return CameraModel{K, K_cv, dist_coeffs_cv, img_size};
 }
 
 
@@ -85,7 +90,7 @@ PlaneWorldModel createWorldModel()
 }
 
 
-void lab6()
+void runPoseEstimationLab()
 {
   // TODO 1: Calibrate camera and set parameters in setupCameraModel().
   // Get camera model parameters.
@@ -106,8 +111,10 @@ void lab6()
   Scene3D scene_3D{world};
 
   // Setup camera stream.
-  const int camera_id = 1; // Should be 0 or 1 on the lab PCs.
+  const int camera_id = 0; // Should be 0 or 1 on the lab PCs.
   cv::VideoCapture cap(camera_id);
+  cap.set(cv::CAP_PROP_FRAME_WIDTH, camera_model.img_size.width);
+  cap.set(cv::CAP_PROP_FRAME_HEIGHT, camera_model.img_size.height);
 
   if (!cap.isOpened())
   {
