@@ -1,4 +1,4 @@
-# Lab: Pose estimation and Augmented Reality
+# Pose estimation and Augmented Reality
 In this lab we will implement pose estimation based on 3D-2D correspondences from scratch!
 
 ![Illustration of pose estimation from 3D-2D correspondences](lab-guide/img/pose_estimation.png)
