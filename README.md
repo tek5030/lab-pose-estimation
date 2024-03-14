@@ -6,8 +6,12 @@ In this lab we will implement pose estimation based on 3D-2D correspondences fro
 
 ![Illustration of pose estimation from 3D-2D correspondences](lab-guide/img/pose_estimation.png)
 
-Start by cloning this repository on your machine.
-Then open the lab project in your editor.
+
+**Start** by cloning this repository on your machine.
+
+Then, open the lab project in CLion using the cmake-file in the base directory:
+`lab-pose-estimation/CMakeLists.txt`.
+If you are uncertain about how this is done, please take a look at [the intro lab].
 
 The lab is carried out by following these steps:
 1. [Get an overview](lab-guide/1-get-an-overview.md)
@@ -21,17 +25,18 @@ Please try to solve the lab with help from others instead of just jumping straig
 Please start the lab by going to the [first step](lab-guide/1-get-an-overview.md).
 
 ## Prerequisites
+- OpenCV must be installed on your system. If you are on a lab computer, you are all set.
 
-For this lab, we can unfortunately not rely on conan to install all required OpenCV modules (namely the `viz` module for 3D visualization). You have a few other options:
+  If you are on Ubuntu, but not on a lab computer, the following should be sufficient _for this lab_.
 
-- Solve the [python lab](https://github.com/tek5030/lab-pose-estimation-py) (recommended)
-- Use the lab computers
-- Install OpenCV using [homebrew](https://brew.sh/) (option for mac and linux). (See also [Getting started on MacOS](https://tek5030.github.io/tutorial/macos.html).)
-- Rely on virtualbox and our prepared linux image with dependencies preinstalled (see [Canvas: Setting up your computer for the labs](https://uio.instructure.com/courses/44675/discussion_topics/295673))
-- Try [Docker toolchain][docker-toolchain] in CLion (very experimental)
+   ```bash
+   sudo apt update
+   sudo apt install libopencv-dev libopencv-viz-dev
+   ```
 
+- We refer to [setup_scripts](https://github.com/tek5030/setup_scripts) and [the intro lab] as a general getting started-guide for the C++ labs on Ubuntu 22.04.
+
+---
 
 [TEK5030]: https://www.uio.no/studier/emner/matnat/its/TEK5030/
-[conan]: https://tek5030.github.io/tutorial/conan.html
-[lab_intro]: https://github.com/tek5030/lab-intro/blob/master/cpp/lab-guide/1-open-project-in-clion.md#6-configure-project
-[docker-toolchain]: https://tek5030.github.io/tutorial/dev-container.html
+[the intro lab]: https://github.com/tek5030/lab-intro/blob/master/cpp/lab-guide/1-open-project-in-clion.md

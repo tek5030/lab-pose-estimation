@@ -1,5 +1,5 @@
 # Step 3: Implement homography-based pose estimation
-We will in this part follow [the slides from this week's lecture](https://www.uio.no/studier/emner/matnat/its/TEK5030/v23/lectures/09-single-view-geometry/) to finish the class `HomographyPoseEstimator`.
+We will in this part follow [the slides from this week's lecture](https://www.uio.no/studier/emner/matnat/its/TEK5030/v24/lectures/09-single-view-geometry/01_pose-estimating-from-a-single-image.pdf) to finish the class `HomographyPoseEstimator`.
 
 First, take a look at the definition and documentation in [homography_pose_estimator.h](../homography_pose_estimator.h). 
 Then go to [homography_pose_estimator.cpp](../homography_pose_estimator.cpp). 

@@ -160,9 +160,9 @@ void runPoseEstimationLab()
                       pose_estimation_duration.count());
 
     // Update 3D visualization.
-    scene_3D.update(undistorted_frame, estimate, camera_model.K);
+    const auto was_stopped = scene_3D.update(undistorted_frame, estimate, camera_model.K);
 
-    if (cv::waitKey(1) >= 0)
+    if (cv::pollKey() >= 0 || was_stopped)
     {
       break;
     }
